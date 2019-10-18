@@ -1,0 +1,28 @@
+{
+  "name": "momentodos",
+  "version": "1.0.0",
+  "description": "momentoDos",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.5",
+    "node": "^12.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "author": "carlos torres",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosTorres0929/MomentoDos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CarlosTorres0929/MomentoDos/issues"
+  },
+  "homepage": "https://github.com/CarlosTorres0929/MomentoDos#readme"
+}
