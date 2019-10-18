@@ -1,45 +1,41 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const fs = require('fs');
 const app = express();
-
+// let informacion = saludo;
 app.use(bodyParser.urlencoded({ extended: false }));
  
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.json({
-      'mensaje' : 'Bienvenido al API de NODEJS + MONGODB + ROBO 3T'
-    })
+  res.send(
+     '<center><h1>BIENVENIDO A NUESTRO SITIO NODEJS</h1></center>'
+)
 });
 
-app.get('/proyectosaludo', function (req, res) {
-    res.json({
-        'data' : 'Aquí van los productos'
-    })
+app.get('/database', function (req, res) {
+    res.send(
+        '<center> <h2>Conexion exitosa con MongoDB</h2> </center>'
+    )
 });
 
-app.get('/producto/:id', function (req, res) {
-    res.json({
-        'data' : `Aquí recibí el ID para mostrar un producto. ID: ${req.params.id}`
-    })
+
+app.get('/saludo/:name', function saludo(req, res) {
+    res.send('Hola   ' + req.params.name)
 });
 
-app.post('/producto', function (req, res) {
-    let datos = req.body;
-
-    if(datos.nombre == undefined || datos.marca == undefined || datos.color == undefined){
-        res.status(400).json({
-            "err" : "Datos incompletos"
-        });
-    }else{
-        res.json({
-            'data' : req.body
-        })
+app.get('/edad/:xy', function(req, res) {
+    if(req.params.xy < 18){
+       res.send("<center><h1>Eres Menor De Edad<h1></center>");
+    }if(req.params.xy > 18){
+            res.send("<center><h1>Eres Mayor De Edad<h1></center>");
     }
+   
 });
 
-mongoose.connect('mongodb://localhost:27017/tienda', {
+
+mongoose.connect('mongodb://localhost:27017/momento2', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }, (err, res) => {
@@ -52,3 +48,16 @@ let port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Servidor ONLINE en el puerto ${ port }`);
 });
+/*
+stdin.addListener("data", function(){
+    fs.writeFile(
+        'informacionIngresada.txt', 
+        informacion, 
+        (err) => {
+            if (err) 
+                throw err;
+        console.log('El archivo con informacion se creo correctamente papi!');
+      });
+
+});
+*/
